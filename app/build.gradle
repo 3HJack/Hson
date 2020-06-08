@@ -30,6 +30,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.alibaba:fastjson:1.1.71.android'
+
     implementation 'com.hhh.onepiece:hson:1.0.0'
     annotationProcessor 'com.hhh.onepiece:hson-processor:1.0.0'
 }
