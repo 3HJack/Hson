@@ -1,0 +1,23 @@
+apply plugin: 'java-library'
+apply plugin: 'com.novoda.bintray-release'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.squareup:javapoet:1.12.1'
+    implementation 'com.hhh.onepiece:hson:1.0.0'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+publish {
+    userOrg = 'onepiece'
+    groupId = 'com.hhh.onepiece'
+    artifactId = 'hson-processor'
+    publishVersion = '1.0.0'
+    desc = 'onepiece hson annotation processor'
+    website = 'https://github.com/3HJack/Hson.git'
+}
