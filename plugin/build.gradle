@@ -1,0 +1,28 @@
+apply plugin: 'java-library'
+apply plugin: 'groovy'
+apply plugin: 'com.novoda.bintray-release'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:3.6.3'
+    implementation 'org.ow2.asm:asm:8.0.1'
+    implementation 'com.hhh.onepiece:hson:1.0.0'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+publish {
+    userOrg = 'onepiece'
+    groupId = 'com.hhh.onepiece'
+    artifactId = 'hson-plugin'
+    publishVersion = '1.0.1'
+    desc = 'onepiece hson gradle plugin'
+    website = 'https://github.com/3HJack/Hson.git'
+}

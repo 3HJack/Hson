@@ -2,3 +2,4 @@ rootProject.name = "Hson"
 include ':app'
 include ':hson'
 include ':processor'
+include ':plugin'
