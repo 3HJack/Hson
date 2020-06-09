@@ -15,6 +15,18 @@ Goals
 * Support arbitrarily complex objects (with deep inheritance hierarchies and extensive use of generic types)
 
 
+Performance comparison
+======================
+
+HsonExample test
+
+| library  | fromJson(time/millisecond) | toJson(time/millisecond) |
+|:--------:|:--------------------------:|:------------------------:|
+|   Gson   |             20             |            28            |
+| fastjson |             49             |            23            |
+|   Hson   |             11             |            7             |
+
+
 usage
 =====
 
