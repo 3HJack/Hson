@@ -59,7 +59,7 @@ Modify the build.gradle file in the relevant library project (including app) dir
 ```groovy
 dependencies {
     
-    implementation 'com.hhh.onepiece:hson:1.0.0'
+    implementation 'com.hhh.onepiece:hson:1.0.1'
     annotationProcessor 'com.hhh.onepiece:hson-processor:1.0.0'
 }
 

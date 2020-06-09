@@ -12,7 +12,7 @@ public class Hson {
   public static void fromJson(String json, Object iHson) throws HsonException {
   }
 
-  public static void fromJson(Object jsonObject, Object iHson) throws HsonException {
+  public static void fromJson(Object jsonObject, Object iHson) {
     if (jsonObject == null || iHson == null) {
       return;
     }

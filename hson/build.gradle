@@ -12,7 +12,7 @@ publish {
     userOrg = 'onepiece'
     groupId = 'com.hhh.onepiece'
     artifactId = 'hson'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'onepiece hson'
     website = 'https://github.com/3HJack/Hson.git'
 }
