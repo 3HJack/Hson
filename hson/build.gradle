@@ -1,8 +1,10 @@
 apply plugin: 'java-library'
+apply plugin: 'maven'
 apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly files("${System.getenv().get('ANDROID_HOME')}/platforms/android-30/android.jar")
 }
 
 sourceCompatibility = "8"
@@ -12,7 +14,20 @@ publish {
     userOrg = 'onepiece'
     groupId = 'com.hhh.onepiece'
     artifactId = 'hson'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.3'
     desc = 'onepiece hson'
     website = 'https://github.com/3HJack/Hson.git'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.hhh.onepiece'
+            pom.artifactId = 'hson'
+            pom.version = '1.0.3'
+            //文件发布到下面目录
+            repository(url: uri('../repo'))
+        }
+    }
 }

@@ -98,9 +98,6 @@ public class HsonTransform extends Transform {
       directoryInputs.addAll(transformInput.getDirectoryInputs());
       allJarInputs.addAll(transformInput.getJarInputs());
       transformInput.getJarInputs().forEach(jarInput -> {
-        // 处理 Hson 库
-        HsonCodeInject.processHsonJar(jarInput);
-
         // 排除第三方 jar 包
         if (jarInput.getFile().getAbsolutePath().endsWith("classes.jar")) {
           libraryJarInputs.add(jarInput);
@@ -115,13 +112,13 @@ public class HsonTransform extends Transform {
     System.out.println(TAG + "transform end");
   }
 
-  private void copyDirectory(TransformInvocation transformInvocation, Collection<DirectoryInput> directoryInputs) {
+  private void copyDirectory(TransformInvocation transformInvocation,
+    Collection<DirectoryInput> directoryInputs) {
     directoryInputs.forEach(directoryInput -> {
       File destFile =
-          transformInvocation.getOutputProvider().getContentLocation(directoryInput.getName(),
-              directoryInput.getContentTypes(), directoryInput.getScopes(), Format.DIRECTORY);
-      System.out.println(TAG + "Directory:" + directoryInput.getFile().getAbsolutePath() + " : "
-          + destFile.getAbsolutePath());
+        transformInvocation.getOutputProvider().getContentLocation(directoryInput.getName(),
+          directoryInput.getContentTypes(), directoryInput.getScopes(), Format.DIRECTORY);
+      System.out.println(TAG + "Directory:" + directoryInput.getFile().getAbsolutePath() + " : " + destFile.getAbsolutePath());
       try {
         // 将input的目录复制到output指定目录
         FileUtils.copyDirectory(directoryInput.getFile(), destFile);
@@ -133,11 +130,9 @@ public class HsonTransform extends Transform {
 
   private void copyJar(TransformInvocation transformInvocation, Collection<JarInput> jarInputs) {
     jarInputs.forEach(jarInput -> {
-      File destFile = transformInvocation.getOutputProvider().getContentLocation(
-          jarInput.getFile().getAbsolutePath(), jarInput.getContentTypes(), jarInput.getScopes(),
-          Format.JAR);
-      System.out.println(
-          TAG + "Jar:" + jarInput.getFile().getAbsolutePath() + " : " + destFile.getAbsolutePath());
+      File destFile =
+        transformInvocation.getOutputProvider().getContentLocation(jarInput.getFile().getAbsolutePath(), jarInput.getContentTypes(), jarInput.getScopes(), Format.JAR);
+      System.out.println(TAG + "Jar:" + jarInput.getFile().getAbsolutePath() + " : " + destFile.getAbsolutePath());
       try {
         FileUtils.copyFile(jarInput.getFile(), destFile);
       } catch (IOException e) {

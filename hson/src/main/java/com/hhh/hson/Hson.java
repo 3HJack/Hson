@@ -1,7 +1,9 @@
 package com.hhh.hson;
 
 import com.hhh.hson.constant.Constants;
-import com.hhh.hson.exception.HsonException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This is the main class for using Hson. Hson is typically used by invoking {@link #toJson(Object)}
@@ -9,14 +11,20 @@ import com.hhh.hson.exception.HsonException;
  */
 public class Hson {
 
-  public static void fromJson(String json, Object iHson) throws HsonException {
+  public static void fromJson(String json, Object iHson) {
+    if (json != null && json.length() != 0 && !json.equals("{}")) {
+      try {
+        fromJson(new JSONObject(json), iHson);
+      } catch (JSONException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 
-  public static void fromJson(Object jsonObject, Object iHson) {
+  public static void fromJson(JSONObject jsonObject, Object iHson) {
     if (jsonObject == null || iHson == null) {
       return;
     }
-    checkJsonObject(jsonObject);
     checkIHson(iHson);
     ((IHson) iHson).fromJson(jsonObject);
   }
@@ -41,15 +49,8 @@ public class Hson {
 
   private static void checkIHson(Object iHson) {
     if (!(iHson instanceof IHson)) {
-      throw new IllegalArgumentException(
-          String.format("%s must have @Json annotation or implement IHson!!!", iHson));
-    }
-  }
-
-  private static void checkJsonObject(Object jsonObject) {
-    if (!jsonObject.getClass().getName().equals(Constants.JSON_OBJECT_CLASS_NAME)) {
-      throw new IllegalArgumentException(
-          String.format("%s must be org.json.JSONObject!!!", jsonObject));
+      throw new IllegalArgumentException(String.format("%s must have @Json annotation or " +
+        "implement IHson!!!", iHson));
     }
   }
 }

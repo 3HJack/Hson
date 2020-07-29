@@ -1,4 +1,5 @@
 apply plugin: 'java-library'
+apply plugin: 'maven'
 apply plugin: 'groovy'
 apply plugin: 'com.novoda.bintray-release'
 
@@ -12,7 +13,7 @@ dependencies {
 
     implementation 'com.android.tools.build:gradle:3.6.3'
     implementation 'org.ow2.asm:asm:8.0.1'
-    implementation 'com.hhh.onepiece:hson:1.0.0'
+    implementation 'com.hhh.onepiece:hson:1.0.3'
 }
 
 sourceCompatibility = "8"
@@ -22,7 +23,20 @@ publish {
     userOrg = 'onepiece'
     groupId = 'com.hhh.onepiece'
     artifactId = 'hson-plugin'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.3'
     desc = 'onepiece hson gradle plugin'
     website = 'https://github.com/3HJack/Hson.git'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.hhh.onepiece'
+            pom.artifactId = 'hson-plugin'
+            pom.version = '1.0.3'
+            //文件发布到下面目录
+            repository(url: uri('../repo'))
+        }
+    }
 }
