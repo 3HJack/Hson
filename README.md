@@ -10,9 +10,8 @@ Goals
 =====
 * The fastest analysis speed
 * Provide simple `toJson()` and `fromJson()` methods to convert Java objects to JSON and vice-versa
-* Extensive support of Java Generics
 * Allow custom representations for objects
-* Support arbitrarily complex objects (with deep inheritance hierarchies and extensive use of generic types)
+* Support arbitrarily complex objects (with deep inheritance hierarchies)
 
 
 Performance comparison
@@ -20,11 +19,11 @@ Performance comparison
 
 HsonExample test
 
-| library  | fromJson(time/millisecond) | toJson(time/millisecond) |
-|:--------:|:--------------------------:|:------------------------:|
-|   Gson   |             20             |            28            |
-| fastjson |             49             |            23            |
-|   Hson   |             11             |            7             |
+| library  | fromJson(t/ms) | toJson(t/ms) |
+|:--------:|:--------------:|:------------:|
+|   Gson   |       20       |     28       |
+| fastjson |       49       |     23       |
+|   Hson   |       11       |     7        |
 
 
 usage
