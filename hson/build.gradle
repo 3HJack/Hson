@@ -14,7 +14,7 @@ publish {
     userOrg = 'onepiece'
     groupId = 'com.hhh.onepiece'
     artifactId = 'hson'
-    publishVersion = '1.0.3'
+    publishVersion = '1.0.4'
     desc = 'onepiece hson'
     website = 'https://github.com/3HJack/Hson.git'
 }
@@ -25,7 +25,7 @@ uploadArchives {
             //设置插件的GAV参数
             pom.groupId = 'com.hhh.onepiece'
             pom.artifactId = 'hson'
-            pom.version = '1.0.3'
+            pom.version = '1.0.4'
             //文件发布到下面目录
             repository(url: uri('../repo'))
         }

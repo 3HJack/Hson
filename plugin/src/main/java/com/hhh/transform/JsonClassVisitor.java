@@ -13,7 +13,6 @@ public class JsonClassVisitor extends ClassVisitor {
   private static final String TAG = "JsonClassVisitor:";
   private static final String JSON_DESCRIPTOR = "L" + Constants.JSON_TYPE + ";";
   private static final String STRING_BUILDER_DESCRIPTOR = "Ljava/lang/StringBuilder;";
-  private static final String OBJECT_DESCRIPTOR = "Ljava/lang/Object;";
   private static final String JSON_OBJECT_DESCRIPTOR = "Lorg/json/JSONObject;";
   private static final String[] IHSON = new String[]{Constants.IHSON_TYPE};
 
@@ -94,12 +93,11 @@ public class JsonClassVisitor extends ClassVisitor {
   private void addFromJsonMethod() {
     System.out.println(TAG + "addFromJsonMethod:" + mName);
     MethodVisitor mv = cv.visitMethod(Opcodes.ACC_PUBLIC, Constants.FROM_JSON_METHOD,
-        getStringDescriptor(OBJECT_DESCRIPTOR), null, null);
+        getStringDescriptor(JSON_OBJECT_DESCRIPTOR), null, null);
     mv.visitCode();
     Label l0 = new Label();
     mv.visitLabel(l0);
     mv.visitVarInsn(Opcodes.ALOAD, 1);
-    mv.visitTypeInsn(Opcodes.CHECKCAST, "org/json/JSONObject");
     mv.visitVarInsn(Opcodes.ALOAD, 0);
     mv.visitMethodInsn(Opcodes.INVOKESTATIC, mName + Constants.AUXILIARY_CLASS_NAME_SUFFIX,
         Constants.FROM_JSON_METHOD, getStringDescriptor(JSON_OBJECT_DESCRIPTOR, mDescriptor),
@@ -110,7 +108,7 @@ public class JsonClassVisitor extends ClassVisitor {
     Label l2 = new Label();
     mv.visitLabel(l2);
     mv.visitLocalVariable("this", mDescriptor, null, l0, l2, 0);
-    mv.visitLocalVariable("jsonObject", OBJECT_DESCRIPTOR, null, l0, l2, 1);
+    mv.visitLocalVariable("jsonObject", JSON_OBJECT_DESCRIPTOR, null, l0, l2, 1);
     mv.visitMaxs(2, 2);
     mv.visitEnd();
   }

@@ -43,7 +43,7 @@ buildscript {
     
     dependencies {
         // This gradle plugin must be added
-        classpath 'com.hhh.onepiece:hson-plugin:1.0.3'
+        classpath 'com.hhh.onepiece:hson-plugin:1.0.4'
     }
   
     // Solve dependency problems
@@ -70,8 +70,8 @@ Modify the build.gradle file in the relevant library project (including app) dir
 ```groovy
 dependencies {
     
-    implementation 'com.hhh.onepiece:hson:1.0.3'
-    annotationProcessor 'com.hhh.onepiece:hson-processor:1.0.3'
+    implementation 'com.hhh.onepiece:hson:1.0.4'
+    annotationProcessor 'com.hhh.onepiece:hson-processor:1.0.4'
 }
 
 ```

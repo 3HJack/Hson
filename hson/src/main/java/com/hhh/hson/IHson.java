@@ -1,8 +1,10 @@
 package com.hhh.hson;
 
+import org.json.JSONObject;
+
 public interface IHson {
 
-  void fromJson(Object jsonObject);
+  void fromJson(JSONObject jsonObject);
 
   void toJson(StringBuilder json);
 }
